@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ethereum-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: ethereum-node
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 75

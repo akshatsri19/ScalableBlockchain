@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ethereum-node
+spec:
+  serviceName: "ethereum"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ethereum
+  template:
+    metadata:
+      labels:
+        app: ethereum
+    spec:
+      containers:
+      - name: ethereum
+        image: ethereum/client-go:latest
+        ports:
+        - containerPort: 30303
+        volumeMounts:
+        - name: ethereum-storage
+          mountPath: /root/.ethereum
+  volumeClaimTemplates:
+  - metadata:
+      name: ethereum-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 50Gi
