@@ -22,7 +22,7 @@ test("Multiplication of 2 numbers", () => {
 var result = mathOperations.product(2,8)
 
 // assert
-expect(result).toBe(27);
+expect(result).toBe(16);
 });
 
 test("Division of 2 numbers", () => {
