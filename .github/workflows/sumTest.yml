@@ -5,12 +5,8 @@ on:
   # Triggers the workflow on push or pull request events but only for changes within the "BCDV4033/Lab1" directory
   push:
     branches: [ "main" ]
-    paths:
-      - 'BCDV4033/Lab1/**'
   pull_request:
     branches: [ "main" ]
-    paths:
-      - 'BCDV4033/Lab1/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
