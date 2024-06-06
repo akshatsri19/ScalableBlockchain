@@ -1,36 +1,44 @@
-name: Node.js CI
+name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [ "main" ]
   pull_request:
-    branches: [main]
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20'
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
+        working-directory: Calculator
 
-    - name: Run tests
-      run: npm test
+      - name: Run tests
+        run: npm test
+        working-directory: Calculator
 
-    - name: Build project
-      run: npm run build
+      - name: Build project
+        run: npm run build
+        working-directory: Calculator
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: build
-        path: dist/
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: Calculator/dist/
+
+      - name: Setup API Key
+        run: echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
+
+      - name: Display Name
+        run: echo "Your Name"
