@@ -2,11 +2,15 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Triggers the workflow on push or pull request events but only for changes within the "BCDV4033/Lab1" directory
   push:
     branches: [ "main" ]
+    paths:
+      - 'BCDV4033/Lab1/**'
   pull_request:
     branches: [ "main" ]
+    paths:
+      - 'BCDV4033/Lab1/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,16 +27,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Set up Node.js environment
+      # Set up Node.js environment with the latest recommended version
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '20'
 
-      # Install dependencies
+      # Install dependencies in BCDV4033/Lab1 directory
       - name: Install dependencies
         run: npm install
+        working-directory: ./BCDV4033/Lab1
 
-      # Run Jest tests
+      # Run tests in BCDV4033/Lab1 directory
       - name: Run tests
         run: npm test
+        working-directory: ./BCDV4033/Lab1
