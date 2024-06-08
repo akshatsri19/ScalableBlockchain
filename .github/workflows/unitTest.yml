@@ -48,6 +48,6 @@ jobs:
            name: assets
            path: BCDV4033/Calculator/dist
       - name: Run Lint Checks
-        run: run eslint
+        run: yarn eslint
         working-directory: BCDV4033/Calculator
         
