@@ -28,8 +28,20 @@ jobs:
         run: npm install
         working-directory: BCDV4033/Calculator
 
-      - name: Run unit tests
-        run: npm test
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with: 
+         name: assets
+         path: BCDV4033/Calculator/dist
+
+      - uses: actions/checkout@v3             
+      - name: Install dependencies           
+        run: npx yarn   
+      - uses: actions/download-artifact@v3   
+        with:
+         path: BCDV4033/Calculator/dist
+      - name: Run Tests                      
+        run: npx yarn test
         working-directory: BCDV4033/Calculator
 
         # Fetch the secret API key
