@@ -31,3 +31,10 @@ jobs:
       - name: Run unit tests
         run: npm test
         working-directory: BCDV4033/Calculator
+
+        # Fetch the secret API key
+      - name: Set up API key
+        run: echo "API_KEY=${{ secrets.TEST_SECRET }}" >> $GITHUB_ENV
+
+      - name: Use API key
+        run: echo "The API key is $API_KEY"
