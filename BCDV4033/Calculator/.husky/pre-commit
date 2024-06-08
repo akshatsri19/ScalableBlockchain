@@ -1,0 +1,3 @@
+echo \" [Husky] pre-commit \"
+npm run style
+npm run test
