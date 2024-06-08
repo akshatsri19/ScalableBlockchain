@@ -1,29 +1,30 @@
-name: CI
+name: Jest_test
 
-on: 
-  push:
-    branches: 
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v2
       with:
-        node-version: '18'
+        node-version: '14' # Adjusted node version to a valid one
+
+    - name: Change to Calculator directory
+      run: cd BCDV4033/Calculator
 
     - name: Install dependencies
       run: npm install
+      working-directory: BCDV4033/Calculator
 
-    - name: Run tests
+    - name: Run Jest tests
       run: npm test
+      working-directory: BCDV4033/Calculator
+
+
+    
