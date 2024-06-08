@@ -49,5 +49,5 @@ jobs:
            path: BCDV4033/Calculator/dist
       - name: Run Lint Checks
         run: yarn style
-
+        working-directory: BCDV4033/Calculator
         
