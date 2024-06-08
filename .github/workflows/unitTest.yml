@@ -26,6 +26,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: BCDV4033/Calculator
 
       - name: Run unit tests
         run: npm test
+        working-directory: BCDV4033/Calculator
