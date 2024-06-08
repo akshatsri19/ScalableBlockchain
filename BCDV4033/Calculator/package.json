@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "babel src -d lib",
-    "prepare": "husky"
+    "build": "babel src -d lib"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +18,10 @@
     "eslint-plugin-react": "^7.34.2",
     "globals": "^15.4.0",
     "husky": "^9.0.11"
+  },
+  "husky": {
+  "hooks": {
+    "pre-commit": "eslint ."
   }
+}
 }
