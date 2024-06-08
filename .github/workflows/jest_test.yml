@@ -29,5 +29,5 @@ jobs:
     - name: Archive dist folder
       uses: actions/upload-artifact@v2
       with:
-        name: dist
+        name: artifacts
         path: BCDV4033/Calculator/dist
