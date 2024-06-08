@@ -13,7 +13,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14' # Adjusted node version to a valid one
+        node-version: '14'
 
     - name: Change to Calculator directory
       run: cd BCDV4033/Calculator
@@ -26,5 +26,8 @@ jobs:
       run: npm test
       working-directory: BCDV4033/Calculator
 
-
-    
+    - name: Archive dist folder
+      uses: actions/upload-artifact@v2
+      with:
+        name: dist
+        path: BCDV4033/Calculator/dist
