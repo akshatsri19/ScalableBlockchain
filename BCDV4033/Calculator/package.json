@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "echo 'build step'"
+    "build": "babel src -d lib"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +14,9 @@
     "jest": "^29.7.0"
   },
   "devDependencies": {
-    "eslint": "^9.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.2",
+    "globals": "^15.4.0",
     "husky": "^9.0.11"
   }
 }
