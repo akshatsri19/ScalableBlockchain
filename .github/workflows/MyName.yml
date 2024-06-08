@@ -1,0 +1,17 @@
+name: Lab1
+
+on: 
+  push:
+    branches: 
+      - main
+
+jobs:
+  echo-name-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Echo my name
+      run: echo "My name is Akshat"
