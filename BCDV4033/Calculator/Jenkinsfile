@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh '''
+                    cd BCDV4033/Calculator
+                    npm install
+                '''
+            }
+        }
+    stages {
+        stage('Test') {
+            steps {
+                echo 'I am testing'
+            }
+        }
+    }
+}
