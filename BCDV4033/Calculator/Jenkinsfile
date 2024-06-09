@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh '''
                     cd BCDV4033/Calculator
-                    npm install
+                    ls
                 '''
             }
         }
