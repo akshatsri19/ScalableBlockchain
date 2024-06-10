@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "babel src -d lib",
-    "prepare": "husky install"
+    "build": "babel src -d lib"
   },
   "keywords": [],
   "author": "",
