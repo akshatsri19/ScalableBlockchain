@@ -50,4 +50,10 @@ jobs:
       - name: Run Lint Checks
         run: yarn eslint
         working-directory: BCDV4033/Calculator
+
+      - name: Set up Husky
+        run: |
+          npx husky install
+          npx husky add .husky/pre-commit "yarn lint"
+        working-directory: BCDV4033/Calculator
         
