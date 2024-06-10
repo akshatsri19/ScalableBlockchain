@@ -21,39 +21,38 @@ jobs:
         with:
           node-version: '14'
           
-      - name: Change to Calculator directory
-        run: cd BCDV4033/Calculator
-
       - name: Install dependencies
         run: npm install
         working-directory: BCDV4033/Calculator
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with: 
-         name: assets
-         path: BCDV4033/Calculator/dist
-         
-         # Fetch the secret API key
+      - name: Set up Husky
+        run: npm install husky --save-dev
+        working-directory: BCDV4033/Calculator
+
+      - name: Install Husky hooks
+        run: |
+          npx husky install
+          npx husky add .husky/pre-commit "yarn lint"
+        working-directory: BCDV4033/Calculator
+
       - name: Set up API key
         run: echo "API_KEY=${{ secrets.TEST_SECRET }}" >> $GITHUB_ENV
 
       - name: Use API key
         run: echo "The API key is $API_KEY"
 
-      - name: Install dependencies
-        run: yarn    
-      - uses: actions/download-artifact@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with: 
+          name: assets
+          path: BCDV4033/Calculator/dist
+
+      - name: Download artifact
+        uses: actions/download-artifact@v2
         with:
-           name: assets
-           path: BCDV4033/Calculator/dist
+          name: assets
+          path: BCDV4033/Calculator/dist
+
       - name: Run Lint Checks
         run: yarn eslint
         working-directory: BCDV4033/Calculator
-
-      - name: Set up Husky
-        run: |
-          npx husky install
-          npx husky add .husky/pre-commit "yarn lint"
-        working-directory: BCDV4033/Calculator
-        
